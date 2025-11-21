@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rins Store | Official Mobile Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-layout">
+            <div class="brand-logo">Rins Store</div>
+            <div class="search-box">
+                <input type="text" placeholder="Cari produk...">
+                <i class="ph ph-magnifying-glass"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 80px;">
+        
+        <div class="banner-container">
+            <div class="banner-wrapper">
+                <div class="banner-slide" style="background: linear-gradient(to right, #166534, #22c55e);">
+                    <div class="banner-content">
+                        <h2>Diskon Spesial!</h2>
+                        <p>Gratis Ongkir Hari Ini</p>
+                        <button class="banner-btn">Cek Sekarang</button>
+                    </div>
+                </div>
+                <div class="banner-slide" style="background: linear-gradient(to right, #0f766e, #14b8a6);">
+                    <div class="banner-content">
+                        <h2>Gadget Baru</h2>
+                        <p>Upgrade HP-mu Sekarang</p>
+                        <button class="banner-btn">Lihat Gadget</button>
+                    </div>
+                </div>
+                <div class="banner-slide" style="background: linear-gradient(to right, #ea580c, #f97316);">
+                    <div class="banner-content">
+                        <h2>Flash Sale ⚡</h2>
+                        <p>Diskon hingga 50%</p>
+                        <button class="banner-btn">Serbuu!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-dots">
+                <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="category-scroll">
+            <div onclick="window.location.href='index.html'" class="cat-card active">
+                <i class="ph ph-squares-four"></i><span>Semua</span>
+            </div>
+            <div onclick="filterCategory('Fashion Pria')" class="cat-card"><i class="ph ph-t-shirt"></i><span>Pria</span></div>
+            <div onclick="filterCategory('Fashion Wanita')" class="cat-card"><i class="ph ph-dress"></i><span>Wanita</span></div>
+            <div onclick="filterCategory('Skincare')" class="cat-card"><i class="ph ph-sparkle"></i><span>Skincare</span></div>
+            <div onclick="filterCategory('Pulsa')" class="cat-card"><i class="ph ph-device-mobile"></i><span>Pulsa</span></div>
+            <div onclick="filterCategory('Top Up Game')" class="cat-card"><i class="ph ph-game-controller"></i><span>Top Up</span></div>
+            <div onclick="filterCategory('Token Listrik')" class="cat-card"><i class="ph ph-lightning"></i><span>Token</span></div>
+            <div onclick="filterCategory('Ebook Digital')" class="cat-card"><i class="ph ph-book-open"></i><span>Ebook</span></div>
+            <div onclick="filterCategory('Elektronik')" class="cat-card"><i class="ph ph-desktop"></i><span>Elektronik</span></div>
+            <div onclick="filterCategory('Aksesoris HP Laptop')" class="cat-card"><i class="ph ph-plugs"></i><span>Aksesoris</span></div>
+            <div onclick="filterCategory('Emas')" class="cat-card"><i class="ph ph-coins"></i><span>Emas</span></div>
+            <div onclick="filterCategory('Food & Drink')" class="cat-card"><i class="ph ph-hamburger"></i><span>Food</span></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="font-family: 'Poppins'; font-size: 1.1rem;">Produk Terbaru</h3>
+            <a href="products.html" style="color: #22C55E; font-size: 0.9rem; text-decoration: none; font-weight: 600;">
+                Lihat Semua
+            </a>
+        </div>
+
+        <div id="product-list" class="product-grid"></div>
+
+        <div id="loading" class="loader-container" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">Rins Store</div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/rinssstore_?igsh=NjJyYTBiNDJzd3kx"><i class="ph ph-instagram-logo"></i></a>
+                <a href="https://www.facebook.com/muhammad.darin.56"><i class="ph ph-facebook-logo"></i></a>
+                <a href="https://www.tiktok.com/@abudzaarr?_r=1&_t=ZS-91aZ4OBPpr8"><i class="ph ph-tiktok-logo"></i></a>
+            </div>
+            <div class="footer-menu">
+                <a href="about.html">Tentang Kami</a>
+                <a href="help.html">Cara Belanja</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Rins Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="ph ph-house"></i>
+            <span>Home</span>
+        </a>
+        
+        <a href="products.html" class="nav-item">
+            <i class="ph ph-grid-four"></i>
+            <span>Produk</span>
+        </a>
+        
+        <a href="cart.html" class="nav-item">
+            <i class="ph ph-shopping-cart"></i>
+            <span>Troli</span>
+            <span id="cart-badge" class="nav-badge hidden">0</span>
+        </a>
+        
+        <a href="login.html" class="nav-item">
+            <i class="ph ph-user"></i>
+            <span>Admin</span>
+        </a>
+    </nav>
+    </nav>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

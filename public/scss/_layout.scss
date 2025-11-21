@@ -1,0 +1,112 @@
+// =========================================
+// GLOBAL LAYOUT & RESET (FLEXBOX STICKY FOOTER)
+// =========================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; 
+  outline: none; 
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh; // Tinggi minimal 1 layar penuh
+  overflow-x: hidden; 
+}
+
+body {
+  background-color: $bg-dark;
+  color: $text-main;
+  font-family: $font-main;
+  font-size: 14px;
+  line-height: 1.5;
+  
+  // Menggunakan Flexbox Column agar footer terdorong ke bawah
+  display: flex;
+  flex-direction: column;
+  
+  // BACKGROUND GRADIENT PREMIUM
+  background: linear-gradient(-45deg, #0F172A, #11231e, #0F172A);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  background-attachment: fixed; 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block; 
+}
+
+ul, ol {
+  list-style: none;
+}
+
+// KONTAINER UTAMA
+.container {
+  width: 100%;
+  padding: 0 16px; 
+  max-width: 480px; 
+  margin: 0 auto;   
+  position: relative;
+  
+  // Flex grow: 1 artinya konten ini akan "rakus" mengambil sisa ruang kosong
+  // sehingga mendorong footer ke paling bawah
+  flex: 1; 
+}
+
+// =========================================
+// GLOBAL POLISHING (SENTUHAN AKHIR)
+// =========================================
+
+// 1. CUSTOM SCROLLBAR (Chrome, Edge, Safari)
+// Membuat scrollbar menjadi tipis dan gelap menyatu dengan tema
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-dark; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba($text-main, 0.2); 
+  border-radius: 10px;
+  
+  &:hover {
+    background: rgba($primary, 0.5); 
+  }
+}
+
+// 2. CUSTOM TEXT SELECTION
+// Mengubah warna blok teks menjadi hijau transparan
+::selection {
+  background: rgba($primary, 0.3);
+  color: white;
+}
+
+// 3. PAGE TRANSITION (FADE IN)
+// Efek halus saat halaman baru dimuat
+body {
+  // Tambahkan animasi ini ke body yang sudah ada
+  animation: pageFadeIn 0.5s ease-out, gradientMove 15s ease infinite;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 4. TOMBOL DI TEKAN (Global Active State)
+// Memberikan efek "membal" pada semua tombol/link saat diklik
+button:active, a.btn-add:active, .cat-card:active {
+  transform: scale(0.95) !important;
+}

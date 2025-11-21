@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Semua Produk | Rins Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Style Pencarian Khusus Halaman Ini */
+        .page-search-container {
+            position: sticky; top: 60px; z-index: 40;
+            background: #0F172A; padding: 10px 0 15px 0;
+            margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .body-search-box { position: relative; width: 100%; }
+        .body-search-box input {
+            width: 100%; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 40px 12px 16px;
+            border-radius: 12px; color: #F8FAFC; font-family: 'Inter'; outline: none;
+        }
+        .body-search-box input:focus { border-color: #22C55E; background: rgba(255, 255, 255, 0.1); }
+        .body-search-box i {
+            position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+            color: #94A3B8; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+        }
+        .body-search-box i:hover { color: #22C55E; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-layout" style="justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <a href="index.html" style="color: #A3B18A; font-size: 1.5rem; display: flex;">
+                    <i class="ph ph-arrow-left"></i>
+                </a>
+                <div id="header-title" style="font-family: 'Poppins'; font-weight: 600; font-size: 1.1rem; margin-left: 10px;">
+                    Semua Produk
+                </div>
+            </div>
+
+            <div class="sort-wrapper">
+                <select id="sort-select" class="sort-select" onchange="window.handleSort(this.value)">
+                    <option value="newest">Terbaru</option>
+                    <option value="price_asc">Termurah</option>
+                    <option value="price_desc">Termahal</option>
+                </select>
+                <i class="ph ph-funnel sort-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 60px;">
+        
+        <div class="page-search-container">
+            <div class="body-search-box">
+                <input type="text" id="local-search-input" placeholder="Cari barang disini...">
+                <i class="ph ph-magnifying-glass" id="local-search-btn"></i>
+            </div>
+        </div>
+
+        <div id="product-list" class="product-grid"></div>
+
+        <div id="loading" class="loader-container" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">Rins Store</div>
+            <div class="copyright" style="border-top: none; padding-top: 5px;">
+                &copy; 2025 Rins Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="ph ph-house"></i><span>Home</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="ph ph-grid-four"></i><span>Produk</span>
+        </a>
+        <a href="cart.html" class="nav-item">
+            <i class="ph ph-shopping-cart"></i><span>Troli</span>
+            <span id="cart-badge" class="nav-badge hidden">0</span>
+        </a>
+        <a href="login.html" class="nav-item">
+            <i class="ph ph-user"></i><span>Admin</span>
+        </a>
+    </nav>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

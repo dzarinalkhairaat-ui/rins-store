@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detail Produk | Rins Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        body {
+            background: #0F172A !important; 
+            background-image: none !important;
+        }
+        .detail-page-wrapper {
+            background-color: #0F172A;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="detail-header">
+        <a href="index.html" id="back-btn" class="icon-btn">
+            <i class="ph ph-arrow-left"></i>
+        </a>
+        
+        <button class="icon-btn">
+            <i class="ph ph-share-network"></i>
+        </button>
+    </div>
+
+    <main class="detail-page-wrapper">
+        <div class="detail-image-container">
+            <img id="p-image" src="" alt="Loading..." onerror="this.src='https://placehold.co/600x600?text=No+Image'">
+        </div>
+
+        <div class="detail-content">
+            <div class="detail-top">
+                <span id="p-category" class="detail-badge">Kategori</span>
+                <h1 id="p-name">Memuat Nama Produk...</h1>
+                <div class="detail-price" id="p-price">Rp 0</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="detail-desc-box">
+                <h3>Deskripsi Produk</h3>
+                <p id="p-desc">Sedang memuat deskripsi lengkap...</p>
+            </div>
+
+            <div class="divider"></div>
+            
+            <div class="related-section">
+                <h3 style="font-family: 'Poppins'; font-size: 1.1rem; margin-bottom: 15px;">Produk Serupa</h3>
+                <div id="related-list" class="product-grid" style="margin-top: 0;">
+                    <p style="color: #94A3B8; font-size: 0.9rem;">Memuat rekomendasi...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="detail-bottom-bar">
+        <div id="action-buttons" style="width: 100%;">
+            <button class="btn-buy-full">
+                Memuat...
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const backBtn = document.getElementById('back-btn');
+            
+            // Cek apakah pengunjung datang dari halaman dalam website ini?
+            // (document.referrer berisi URL halaman sebelumnya)
+            if (document.referrer && document.referrer.includes(window.location.host)) {
+                
+                // Jika YA (dari Home/Kategori), ubah fungsi tombol jadi "Back"
+                backBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); // Jangan lari ke index.html
+                    history.back();     // Mundur ke halaman sebelumnya
+                });
+                
+            } 
+            // Jika TIDAK (misal dari Refresh atau ketik URL), biarkan dia lari ke href="index.html"
+        });
+    </script>
+</body>
+</html>

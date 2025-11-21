@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cara Belanja | Rins Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .step-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; margin-bottom: 40px; }
+        .step-card {
+            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 20px; border-radius: 16px; display: flex; align-items: center; gap: 15px;
+            transition: transform 0.2s;
+        }
+        .step-card:active { transform: scale(0.98); }
+        .step-number {
+            background: #22C55E; color: #0F172A; width: 35px; height: 35px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: bold;
+            font-family: 'Poppins'; flex-shrink: 0; font-size: 1.1rem;
+        }
+        .step-text h4 { color: white; margin-bottom: 4px; font-size: 0.95rem; }
+        .step-text p { color: #94A3B8; font-size: 0.85rem; margin: 0; line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-layout">
+            <a href="javascript:history.back()" style="color: #A3B18A; font-size: 1.5rem; display: flex;">
+                <i class="ph ph-arrow-left"></i>
+            </a>
+            <div id="header-title" style="font-family: 'Poppins'; font-weight: 600; font-size: 1.1rem; margin-left: 10px;">
+                Panduan Belanja
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 80px;">
+        
+        <div style="background: linear-gradient(to right, #166534, #22c55e); padding: 25px 20px; border-radius: 16px; color: white; text-align: center; box-shadow: 0 10px 20px -5px rgba(34, 197, 94, 0.3);">
+            <h2 style="margin-bottom: 5px; font-family: 'Poppins';">Cara Order Mudah</h2>
+            <p style="opacity: 0.9; font-size: 0.9rem;">Ikuti 4 langkah praktis berikut</p>
+        </div>
+
+        <div class="step-list">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-text">
+                    <h4>Pilih Produk</h4>
+                    <p>Cari produk yang Anda suka dan klik tombol <b>Tambah</b>.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-text">
+                    <h4>Cek Keranjang</h4>
+                    <p>Klik ikon Keranjang di bawah untuk melihat pesanan Anda.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-text">
+                    <h4>Isi Data Diri</h4>
+                    <p>Lengkapi Nama, Alamat, dan Pilih Metode Pembayaran.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-text">
+                    <h4>Checkout WhatsApp</h4>
+                    <p>Klik <b>Pesan Sekarang</b>, pesanan akan otomatis terkirim ke Admin.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">Rins Store</div>
+            <div class="copyright" style="border: none; padding-top: 5px;">
+                &copy; 2025 Rins Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item"><i class="ph ph-house"></i><span>Home</span></a>
+        <a href="category.html" class="nav-item"><i class="ph ph-squares-four"></i><span>Kategori</span></a>
+        <a href="cart.html" class="nav-item"><i class="ph ph-shopping-cart"></i><span>Troli</span></a>
+        <a href="login.html" class="nav-item"><i class="ph ph-user"></i><span>Admin</span></a>
+    </nav>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

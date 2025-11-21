@@ -1,0 +1,23 @@
+// FONT (Kita akan load fontnya nanti di HTML)
+$font-main: 'Inter', sans-serif;
+$font-heading: 'Poppins', sans-serif;
+
+// WARNA (Green Gradient Elegance Theme)
+$bg-dark: #0F172A;       // Navy Gelap (Background Utama)
+$text-main: #F8FAFC;     // Putih Terang
+$text-muted: #94A3B8;    // Abu-abu (untuk keterangan)
+$text-accent: #A3B18A;   // Hijau Olive (Teks sekunder)
+
+$primary: #22C55E;       // Hijau Terang (Aksen)
+$secondary: #166534;     // Hijau Gelap (Promo)
+$cta: #4ADE80;           // Lime Green (Tombol Beli/Action)
+$cta-hover: #22C55E;     // Warna saat tombol disentuh
+
+$card-bg: rgba(30, 41, 59, 0.7); // Transparan untuk efek kaca (Glassmorphism)
+$border-color: rgba(74, 222, 128, 0.1); // Garis tipis hijau
+
+// UKURAN
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$nav-height: 70px;       // Tinggi navigasi bawah

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Semua Produk | Rins Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-layout" style="justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <a href="index.html" style="color: #A3B18A; font-size: 1.5rem; display: flex;">
+                    <i class="ph ph-arrow-left"></i>
+                </a>
+                <div id="header-title" style="font-family: 'Poppins'; font-weight: 600; font-size: 1.1rem; margin-left: 10px;">
+                    Semua Produk
+                </div>
+            </div>
+
+            <div class="sort-wrapper">
+                <select id="sort-select" class="sort-select" onchange="window.handleSort(this.value)">
+                    <option value="newest">Terbaru</option>
+                    <option value="price_asc">Termurah</option>
+                    <option value="price_desc">Termahal</option>
+                </select>
+                <i class="ph ph-funnel sort-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 60px;">
+        <div id="subcategory-container" class="subcategory-scroll"></div>
+        <div id="product-list" class="product-grid" style="margin-top: 15px;"></div>
+        <div id="loading" class="loader-container" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">Rins Store</div>
+            <div class="copyright" style="border-top: none; padding-top: 5px;">
+                &copy; 2025 Rins Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="ph ph-house"></i><span>Home</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="ph ph-grid-four"></i><span>Produk</span>
+        </a>
+        <a href="cart.html" class="nav-item">
+            <i class="ph ph-shopping-cart"></i><span>Troli</span>
+        </a>
+        <a href="login.html" class="nav-item">
+            <i class="ph ph-user"></i><span>Admin</span>
+        </a>
+    </nav>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

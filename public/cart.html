@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja | Rins Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Fix Header Layout (Grid 3 Kolom agar judul pas di tengah) */
+        .header-layout {
+            display: grid !important;
+            grid-template-columns: 40px 1fr 40px;
+            align-items: center;
+            gap: 0 !important;
+        }
+        
+        /* Style Item Keranjang */
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            background: rgba(30, 41, 59, 0.6);
+            padding: 12px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+        }
+        .cart-img {
+            width: 80px; height: 80px; object-fit: cover; border-radius: 12px;
+            background: #1e293b;
+        }
+        .cart-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        
+        .qty-control {
+            display: flex; align-items: center; gap: 12px; margin-top: 8px;
+            background: rgba(0,0,0,0.2); padding: 4px; border-radius: 8px; width: fit-content;
+        }
+        .btn-qty {
+            background: #334155; color: white; border: none;
+            width: 24px; height: 24px; border-radius: 6px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        /* Checkout Form */
+        .checkout-section {
+            margin-top: 30px; padding: 20px;
+            background: linear-gradient(to bottom right, rgba(22, 101, 52, 0.1), rgba(15, 23, 42, 0.8));
+            border-radius: 20px; border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+        
+        /* Tampilan Kosong (Empty State) */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh; /* Agar posisinya di tengah layar */
+            text-align: center;
+        }
+        .empty-icon {
+            font-size: 4rem;
+            color: #22C55E;
+            opacity: 0.2;
+            margin-bottom: 20px;
+        }
+        .btn-shop-now {
+            margin-top: 20px;
+            background: #22C55E;
+            color: #0F172A;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            transition: 0.3s;
+        }
+        .btn-shop-now:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-layout">
+            <a href="index.html" onclick="if(document.referrer) { history.back(); return false; }" style="color: #A3B18A; font-size: 1.5rem; display: flex;">
+                <i class="ph ph-arrow-left"></i>
+            </a>
+            
+            <div style="font-family: 'Poppins'; font-weight: 600; font-size: 1.1rem; text-align: center; color: #F8FAFC;">
+                Keranjang Saya
+            </div>
+
+            <div></div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 80px;">
+        
+        <div id="cart-items-container">
+            <div class="empty-state">
+                <i class="ph ph-shopping-cart empty-icon"></i>
+                <h3 style="margin-bottom: 8px; font-family: 'Poppins';">Keranjang Kosong</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; max-width: 250px;">
+                    Wah, sepertinya kamu belum memilih barang apapun nih.
+                </p>
+                <a href="products.html" class="btn-shop-now">
+                    Belanja Sekarang <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div id="checkout-area" style="display: none;">
+            
+            <div style="margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold;">
+                    <span>Total Belanja:</span>
+                    <span id="cart-total" style="color: #22C55E;">Rp 0</span>
+                </div>
+            </div>
+
+            <div class="checkout-section">
+                <h3 style="margin-bottom: 15px; font-family: 'Poppins'; font-size: 1.1rem;">
+                    <i class="ph ph-map-pin" style="color:#22C55E; margin-right: 5px;"></i> Alamat Pengiriman
+                </h3>
+                
+                <div style="margin-bottom: 12px;">
+                    <input type="text" id="cx-name" placeholder="Nama Penerima" 
+                           style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #0F172A; color: white; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <input type="tel" id="cx-phone" placeholder="Nomor WhatsApp (08xxx)" 
+                           style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #0F172A; color: white; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <textarea id="cx-address" rows="2" placeholder="Alamat Lengkap (Jalan, RT/RW, Kota)" 
+                              style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #0F172A; color: white; outline: none; font-family: inherit;"></textarea>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; font-size: 0.95rem; color: #A3B18A;">Metode Pembayaran</h4>
+                <select id="payment-method" style="width: 100%; padding: 12px; border-radius: 10px; background: #0F172A; color: white; border: 1px solid rgba(255,255,255,0.1); outline: none;">
+                    <option value="BSI">Bank BSI</option>
+                    <option value="BRI">Bank BRI</option>
+                    <option value="SeaBank">SeaBank</option>
+                    <option value="Dana">Dana</option>
+                    <option value="GoPay">GoPay</option>
+                    <option value="ShopeePay">ShopeePay</option>
+                    <option value="QRIS">QRIS (Scan)</option>
+                    <option value="COD">COD (Bayar Ditempat)</option>
+                </select>
+
+                <h4 style="margin: 15px 0 10px; font-size: 0.95rem; color: #A3B18A;">Pilih Admin</h4>
+                <h4 style="margin: 15px 0 10px; font-size: 0.95rem; color: #A3B18A;">Pilih Admin</h4>
+                <select id="admin-number" style="width: 100%; padding: 12px; border-radius: 10px; background: #0F172A; color: white; border: 1px solid rgba(255,255,255,0.1); outline: none;">
+                    <option value="6281234567890">Admin Rins 1</option>
+                    <option value="6289876543210">Admin Rins 2</option>
+                </select>
+
+                <button onclick="processCheckout()" style="width: 100%; margin-top: 25px; background: linear-gradient(135deg, #22C55E, #166534); color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);">
+                    <i class="ph ph-whatsapp-logo" style="font-size: 1.3rem;"></i>
+                    Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">Rins Store</div>
+            <div class="copyright" style="border-top: none; padding-top: 5px;">
+                &copy; 2025 Rins Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="ph ph-house"></i><span>Home</span>
+        </a>
+        <a href="products.html" class="nav-item">
+            <i class="ph ph-grid-four"></i><span>Produk</span>
+        </a>
+        <a href="cart.html" class="nav-item active">
+            <i class="ph ph-shopping-cart"></i><span>Troli</span>
+        </a>
+        <a href="login.html" class="nav-item">
+            <i class="ph ph-user"></i><span>Admin</span>
+        </a>
+    </nav>
+
+    <script type="module">
+        import { initCartPage, processCheckout } from './js/modules/cart.js';
+        initCartPage();
+        window.processCheckout = processCheckout;
+    </script>
+</body>
+</html>

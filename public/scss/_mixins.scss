@@ -1,0 +1,20 @@
+// Flexbox Center (Tengah vertikal & horizontal)
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Flexbox Space Between (Kiri Kanan Mentok)
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Tampilan Mobile-First (Grid Produk)
+@mixin grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
