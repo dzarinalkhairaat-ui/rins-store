@@ -8,22 +8,54 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="css/main.css">
     <style>
-        /* Style Pencarian Khusus Halaman Ini */
+        /* FIX: Background Full Width */
         .page-search-container {
-            position: sticky; top: 60px; z-index: 40;
-            background: #0F172A; padding: 10px 0 15px 0;
-            margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky; 
+            top: 60px; 
+            z-index: 40;
+            background: #0F172A; 
+            
+            /* Hapus padding kiri-kanan di container agar background mentok */
+            padding: 10px 0 15px 0; 
+            margin-bottom: 10px; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            
+            /* Trik Melebar Full Layar (Negatif Margin) */
+            margin-left: -16px;  
+            margin-right: -16px;
+            width: calc(100% + 32px); /* Kompensasi margin negatif */
         }
-        .body-search-box { position: relative; width: 100%; }
+        
+        /* Wrapper agar input tetap punya jarak aman dari pinggir */
+        .body-search-box { 
+            position: relative; 
+            width: 100%; 
+            padding: 0 16px; /* Beri jarak dalam untuk input */
+        }
+        
         .body-search-box input {
-            width: 100%; background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 40px 12px 16px;
-            border-radius: 12px; color: #F8FAFC; font-family: 'Inter'; outline: none;
+            width: 100%; 
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 12px 40px 12px 16px;
+            border-radius: 12px; 
+            color: #F8FAFC; 
+            font-family: 'Inter'; 
+            outline: none;
         }
-        .body-search-box input:focus { border-color: #22C55E; background: rgba(255, 255, 255, 0.1); }
+        .body-search-box input:focus { 
+            border-color: #22C55E; 
+            background: rgba(255, 255, 255, 0.1); 
+        }
         .body-search-box i {
-            position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
-            color: #94A3B8; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+            position: absolute; 
+            right: 32px; /* Sesuaikan posisi icon karena ada padding container */
+            top: 50%; 
+            transform: translateY(-50%);
+            color: #94A3B8; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            transition: 0.3s;
         }
         .body-search-box i:hover { color: #22C55E; }
     </style>
