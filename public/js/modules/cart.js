@@ -1,7 +1,7 @@
 import { formatRupiah } from './utils.js';
 
 const CART_KEY = 'rins_store_cart';
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://rins-store.vercel.app';
 
 export const getCart = () => {
     const cart = localStorage.getItem(CART_KEY);

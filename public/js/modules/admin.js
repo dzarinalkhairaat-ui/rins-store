@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://rins-store.vercel.app';
 
 // --- DATA KATEGORI ---
 const subcategoriesMap = {

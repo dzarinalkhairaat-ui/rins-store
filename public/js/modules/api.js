@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api'; 
+const API_URL = 'https://rins-store.vercel.app/api'; 
 
 // Update: Menambahkan parameter sort
 export const getProducts = async (keyword = '', category = '', subcategory = '', sort = '') => {
